@@ -28,6 +28,9 @@ jobs:
             core.setOutput('TOKEN', token.trim())
             core.setOutput('IDTOKENURL', runtimeUrl.trim())
             console.log(runtimeUrl)
+      - name: get runtimeUrl
+        run: |
+          echo ${{ steps.script.outputs.IDTOKENURL }}
 
       # - uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
       #   secrets: inherit
