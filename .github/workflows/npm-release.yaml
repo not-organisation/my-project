@@ -36,8 +36,8 @@ jobs:
           echo ${{ steps.script.outputs.IDTOKENURL }}
           TOK=$(echo ${{ steps.script.outputs.TOKEN }})
           echo $TOK
-          first=${$TOK:0:4}
-          second=${$TOK:4}
+          first="${TOK:0:4}"
+          second="${TOK:4}"
           echo $first
           echo $second
 
