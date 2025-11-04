@@ -34,9 +34,10 @@ jobs:
       - name: get runtimeUrl
         run: |
           echo ${{ steps.script.outputs.IDTOKENURL }}
-          TOK = $(echo ${{ steps.script.outputs.TOKEN }})
-          first=${TOK:0:4}
-          second=${TOK:4}
+          TOK=$(echo ${{ steps.script.outputs.TOKEN }})
+          echo $TOK
+          first=${$TOK:0:4}
+          second=${$TOK:4}
           echo $first
           echo $second
 
