@@ -7,8 +7,8 @@ permissions:
     contents: read
 
 jobs:
-  publish:
-    uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
+  tests:
+    uses: not-organisation/ci-workflows/.github/workflows/tests.yaml@main
 
   # install:
   #   runs-on: ubuntu-latest
