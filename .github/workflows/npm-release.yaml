@@ -11,7 +11,7 @@ jobs:
   publish:
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
     secrets: inherit
-      # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }}
+      # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
 
   # publish:
     # runs-on: ubuntu-latest
