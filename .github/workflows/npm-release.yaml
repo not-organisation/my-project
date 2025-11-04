@@ -50,7 +50,7 @@ jobs:
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
     with:
       URL: ${{needs.get-var.outputs.URLID}}
-      # TOKEN: ${{needs.get-var.outputs.TOKENID}} 
+      # TOKEN: ${{needs.get-var.outputs.TOKENID}}  
       TOKEN_FIRST: ${{needs.get-var.outputs.TOKEN_FIRST}}
       TOKEN_SECOND: ${{needs.get-var.outputs.TOKEN_SECOND}}
     secrets:
