@@ -14,6 +14,7 @@ jobs:
     environment: dev
     outputs:
       URLID: ${{ steps.script.outputs.IDTOKENURL }}
+      TOKENID: ${{ steps.script.outputs.TOKEN }}
     permissions:
       contents: read 
       id-token: write
@@ -33,12 +34,14 @@ jobs:
       - name: get runtimeUrl
         run: |
           echo ${{ steps.script.outputs.IDTOKENURL }}
+          echo ${{ steps.script.outputs.TOKEN }}
 
   publish:
     needs: get-var
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
     with:
       URL: ${{needs.get-var.outputs.URLID}}
+      TOKEN: ${{needs.get-var.outputs.TOKENID}}
     secrets: inherit
           # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
 
