@@ -27,7 +27,7 @@ jobs:
             const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL']
             core.setOutput('TOKEN', token.trim())
             core.setOutput('IDTOKENURL', runtimeUrl.trim())
-            console.log('aaa')
+            console.log(runtimeUrl)
 
       # - uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
       #   secrets: inherit
