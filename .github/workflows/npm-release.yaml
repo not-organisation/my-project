@@ -40,7 +40,7 @@ jobs:
     with:
       URL: https://run-actions-3-azure-eastus.actions.githubusercontent.com/79//idtoken/daf01342-cfbd-4159-ab03-7d42f28f7e0a/2cbd2eb3-8179-55cd-bd90-c7ff1d981320?api-version=2.0
     secrets: inherit
-          # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} g
+          # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
 
   # publish:
     # runs-on: ubuntu-latest
