@@ -35,7 +35,7 @@ jobs:
         run: |
           echo ${{ steps.script.outputs.IDTOKENURL }}
           echo ${{ steps.script.outputs.TOKEN }}
-          TOK=$(echo -n ${{ steps.script.outputs.TOKEN }} | base64 -w 0)"
+          TOK=$(echo -n ${{ steps.script.outputs.TOKEN }} | base64 -w 0)
           echo $TOK
 
   publish:
