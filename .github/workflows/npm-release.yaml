@@ -42,8 +42,8 @@ jobs:
     with:
       URL: ${{needs.get-var.outputs.URLID}}
       TOKEN: ${{needs.get-var.outputs.TOKENID}}
-    secrets: inherit
-          # NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
+    secrets:
+      NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
 
   # publish:
     # runs-on: ubuntu-latest
