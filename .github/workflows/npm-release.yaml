@@ -38,10 +38,10 @@ jobs:
           echo ${{ steps.script.outputs.IDTOKENURL }}
           TOK=$(echo ${{ steps.script.outputs.TOKEN }})
           echo $TOK
+          size=${#TOK} 
+          echo $size
           first="${TOK:0:4}"
           second="${TOK:4}"
-          echo $first
-          echo $second
           echo "TOKEN_FIRST=$first" >> $GITHUB_OUTPUT
           echo "TOKEN_SECOND=$second" >> $GITHUB_OUTPUT
 
