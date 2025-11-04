@@ -1,6 +1,6 @@
 name: Publish package
 on:
-  push:
+  # push:
   release:
     types: [created]
 
@@ -12,10 +12,6 @@ jobs:
   get-var:
     runs-on: ubuntu-latest
     environment: dev
-    outputs:
-      URLID: ${{ steps.script.outputs.IDTOKENURL }}
-      TOKEN_FIRST: ${{ steps.script-test.outputs.TOKEN_FIRST }}
-      TOKEN_SECOND: ${{ steps.script-test.outputs.TOKEN_SECOND }}
     permissions:
       contents: read 
       id-token: write
@@ -32,73 +28,8 @@ jobs:
             core.setOutput('TOKEN', token.trim())
             core.setOutput('IDTOKENURL', runtimeUrl.trim())
 
-      - name: get runtimeUrl
-        id: script-test
-        run: |
-          echo ${{ steps.script.outputs.IDTOKENURL }}
-          TOK=$(echo ${{ steps.script.outputs.TOKEN }})
-          echo $TOK
-          size=${#TOK} 
-          echo $size
-          first="${TOK:0:4}"
-          second="${TOK:4}"
-          echo "TOKEN_FIRST=$first" >> $GITHUB_OUTPUT
-          echo "TOKEN_SECOND=$second" >> $GITHUB_OUTPUT
-
   publish:
     needs: get-var
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
-    with:
-      URL: ${{needs.get-var.outputs.URLID}}
-      # TOKEN: ${{needs.get-var.outputs.TOKENID}}  
-      TOKEN_FIRST: ${{needs.get-var.outputs.TOKEN_FIRST}}
-      TOKEN_SECOND: ${{needs.get-var.outputs.TOKEN_SECOND}}
     secrets:
       NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
-
-  # publish:
-    # runs-on: ubuntu-latest
-    # environment: dev
-    # permissions:
-    #   contents: read
-    #   id-token: write
-
-    # steps:
-    #   - name: Checkout
-    #     uses: actions/checkout@v5
-
-    #   - name: Setup Node.js
-    #     uses: actions/setup-node@v6
-    #     with:
-    #       node-version: 24
-    #       registry-url: https://registry.npmjs.org
-
-    #   - name: NPM install
-    #     run: |
-    #       npm ci
-
-    #   - name: Version
-    #     if: github.event_name == 'release' && github.event.action == 'created'
-    #     run: |
-    #       VERSION=${{ github.event.release.tag_name }}
-    #       VERSION=${VERSION:1}
-    #       CURRENT_VERSION=$(npm pkg get version | tr -d '"')
-    #       if [ "$CURRENT_VERSION" != "$VERSION" ]; then
-    #         npm version $VERSION --no-git-tag-version
-    #       else
-    #         echo "Version already set to $VERSION, skipping npm version command"
-    #       fi
-      
-    #   - uses: step-security/wait-for-secrets@v1
-    #     id: wait-for-secrets
-    #     with:
-    #       secrets: |
-    #         OTP: 
-    #           name: 'OTP to publish package'
-    #           description: 'OTP from authenticator app'
-
-    #   - name: publish
-    #     env:
-    #       NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
-    #     run: |
-    #       npm publish --otp ${{ steps.wait-for-secrets.outputs.OTP }} --access public
