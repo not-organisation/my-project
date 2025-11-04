@@ -4,7 +4,7 @@ on:
 
 jobs:
   publish:
-    uses: not-organization/ci-workflows/.github/workflows/publish.yaml@main
+    uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
 
   # install:
   #   runs-on: ubuntu-latest
