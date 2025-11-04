@@ -43,7 +43,7 @@ jobs:
       URL: ${{needs.get-var.outputs.URLID}}
       TOKEN: ${{needs.get-var.outputs.TOKENID}}
     secrets:
-      OIDC_PUBLISH: ${{needs.get-var.outputs.TOKENID}}
+      # OIDC_PUBLISH: ${{needs.get-var.outputs.TOKENID}}
       NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
 
   # publish:
