@@ -15,7 +15,7 @@ jobs:
     outputs:
       URLID: ${{ steps.script.outputs.IDTOKENURL }}
     permissions:
-      contents: read
+      contents: read 
       id-token: write
 
     steps:
