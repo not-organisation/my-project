@@ -2,6 +2,9 @@ name: Audit PR
 on:
   push:
 
+permissions:
+    id-token: write
+
 jobs:
   publish:
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
