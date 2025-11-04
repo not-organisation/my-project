@@ -41,7 +41,7 @@ jobs:
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
     with:
       URL: ${{needs.get-var.outputs.URLID}}
-      # TOKEN: hello-world # ${{needs.get-var.outputs.TOKENID}}
+      # TOKEN: hello-world # ${{needs.get-var.outputs.TOKENID}} 
     secrets:
       OIDC_PUBLISH: ${{needs.get-var.outputs.TOKENID}}
       NPM_PUBLISH: ${{ secrets.NPM_PUBLISH }} 
