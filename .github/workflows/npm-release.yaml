@@ -3,6 +3,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     uses: not-organisation/ci-workflows/.github/workflows/publish.yaml@main
